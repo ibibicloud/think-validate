@@ -1,19 +1,25 @@
+# think-validate
 
-## think-validate
-基于 https://github.com/top-think/think-validate/tree/v2.0.2
+基于PHP8.0+ 的Validate实现
 
-如果数据表设计了 <u>__软删除__</u> unique 验证规则 默认数据表排除 <u>__delete_time = 0__</u>
+## 主要特性
+- 基于PHP8和强类型实现
+- 内置丰富的验证规则
+- 支持验证器类、数组和链式方法定义验证规则
+- 支持验证场景和验证分组
+- 支持独立数据验证
+- 支持枚举验证
+- 支持批量验证
+- 支持抛出异常
+
+
+## 安装
 ~~~
-`delete_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
+composer require topthink/think-validate
 ~~~
 
-### 安装
-~~~
-composer require ibibicloud/think-validate
-~~~
-
-### 用法
-~~~
+## 用法
+~~~php
 use think\facade\Validate;
 
 $validate = Validate::rule([
@@ -23,39 +29,16 @@ $validate = Validate::rule([
 
 $data = [
     'name'  => 'thinkphp',
-    'email' => 'thinkphp#qq.com'
+    'email' => 'thinkphp@qq.com'
 ];
 
-if ( !$validate->check($data) ) {
+if (!$validate->check($data)) {
     var_dump($validate->getError());
 }
 ~~~
 
-### 自定义 message 错误提示信息
-~~~
-use think\facade\Validate;
-
-$validate = Validate::rule([
-    'name'  => 'require|max:25',
-    'email' => 'email'
-])->message([
-    'name.require'  => '用户名必填',
-    'name.max'      => '用户名超出最大长度25',
-    'email.email'   => '邮箱格式错误'
-]);
-
-$data = [
-    'name'  => 'thinkphp',
-    'email' => 'thinkphp#qq.com'
-];
-
-if ( !$validate->check($data) ) {
-    var_dump($validate->getError());
-}
-~~~
-
-### 支持创建验证器进行数据验证
-~~~
+支持创建验证器进行数据验证
+~~~php
 <?php
 namespace app\index\validate;
 
@@ -81,7 +64,7 @@ class User extends Validate
 ~~~
 
 验证器调用代码如下：
-~~~
+~~~php
 $data = [
     'name'  => 'thinkphp',
     'email' => 'thinkphp@qq.com',
@@ -89,9 +72,11 @@ $data = [
 
 $validate = new \app\index\validate\User;
 
-if ( !$validate->check($data) ) {
+if (!$validate->check($data)) {
     var_dump($validate->getError());
 }
 ~~~
 
-更多用法可以参考6.0完全开发手册的[验证](https://www.kancloud.cn/manual/thinkphp6_0/1037623)章节
+## 文档
+
+详细使用请参考 [ThinkValidate开发指南](https://doc.thinkphp.cn/@think-validate)
