@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
+// think-validate 助手函数
+
 use think\Validate;
 use think\validate\ValidateRuleSet;
-
-// think-validate 助手函数
 
 if (!function_exists('validate')) {
     /**
