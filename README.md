@@ -1,5 +1,5 @@
 
-## think-validate
+## think-validate 数据验证类库
 基于版本 https://github.com/top-think/think-validate/tree/v3.0.7
 
 文档地址 https://doc.thinkphp.cn/v8_0/validate.html
