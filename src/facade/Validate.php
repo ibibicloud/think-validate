@@ -68,4 +68,5 @@ class Validate extends Facade
     {
         return 'think\Validate';
     }
+    
 }

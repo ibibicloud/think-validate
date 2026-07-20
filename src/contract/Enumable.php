@@ -11,4 +11,5 @@ interface Enumable
 {
 	// 返回枚举类的清单
     public static function values(): array;
+    
 }
