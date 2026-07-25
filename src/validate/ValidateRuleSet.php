@@ -17,7 +17,8 @@ class ValidateRuleSet
      * @access public
      */
     public function __construct(protected array|Closure $rules = [], protected array $message = [])
-    {}
+    {
+    }
 
     /**
      * 添加验证因子
@@ -62,5 +63,4 @@ class ValidateRuleSet
     {
         return $this->message;
     }
-    
 }

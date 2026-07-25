@@ -176,5 +176,4 @@ class ValidateRule
 
         return call_user_func_array([$rule, 'addItem'], $args);
     }
-    
 }
